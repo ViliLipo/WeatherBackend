@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for WeatherBackend/controllers/observations.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">WeatherBackend/controllers</a> observations.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75.86% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>22/29</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>7/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">42.86% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>3/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75.86% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>22/29</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
+const observationsRouter = require('express').Router()
+const Observation = require('../models/observation')
+const Location = require('../models/location')
+&nbsp;
+&nbsp;
+&nbsp;
+observationsRouter.get('/', (request, response) =&gt; {
+  Observation
+            .find({})
+            .populate('location', {city:1, coordinates:1})
+            .then (observations =&gt; {
+              response.json(observations.map(Observation.format))
+            }).catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; {
+<span class="cstat-no" title="statement not covered" >              response.status(404).json({error: 'observations not found'})</span>
+            })
+})
+&nbsp;
+observationsRouter.get('/:id', <span class="fstat-no" title="function not covered" >(r</span>equest, response) =&gt; {
+<span class="cstat-no" title="statement not covered" >  Observation</span>
+            .findById(request.params.id)
+            .populate('location', {city:1, coordinates:1})
+            .then(<span class="fstat-no" title="function not covered" >ob</span>s =&gt; {
+<span class="cstat-no" title="statement not covered" >              response.json(Observation.format(obs))</span>
+            }).catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; {
+<span class="cstat-no" title="statement not covered" >              console.log(error)</span>
+<span class="cstat-no" title="statement not covered" >              response.status(404).json({error:'Observation not found'})</span>
+            })
+})
+&nbsp;
+observationsRouter.post('/', async (request, response) =&gt; {
+  try {
+    if (!request.body.temperature || !request.body.time || !request.body.location
+    || request.body.temperature &lt; -80 || request.body.temperature &gt; 70) {
+      console.log(request.body)
+      response.status(400).json({error:'Bad request'})
+      return
+    }
+    const body = request.body
+    //console.log(request.body)
+    const location = await Location.findById(body.location._id)
+    const obs = new Observation({
+      temperature: body.temperature,
+      time: body.time,
+      location: body.location
+    })
+    var savedObs = await obs.save()
+    var resObs = await Observation
+                        .findById(savedObs._id)
+                        .populate('location', {city:1, coordinates:1})
+    location.observations = location.observations.concat(savedObs._id)
+    await location.save()
+    response.status(201).json(Observation.format(resObs))
+  } catch (exception) {
+<span class="cstat-no" title="statement not covered" >    console.log(exception)</span>
+<span class="cstat-no" title="statement not covered" >    response.status(500).json({error:'Something went wrong...'})</span>
+  }
+})
+&nbsp;
+module.exports = observationsRouter
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Feb 25 2018 13:02:40 GMT+0200 (EET)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
