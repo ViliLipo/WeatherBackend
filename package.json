@@ -1,0 +1,24 @@
+{
+  "name": "weatherbackend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.7"
+  },
+  "devDependencies": {
+    "jest": "^22.4.2",
+    "supertest": "^3.0.0",
+    "dotenv": "^5.0.0",
+    "nodemon": "^1.15.1"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test node_modules/.bin/jest --verbose",
+    "watch": "NODE_ENV=development node_modules/.bin/nodemon index.js"
+  },
+  "author": "Vili Lipo",
+  "license": "ISC",
+  "description": ""
+}
