@@ -32,7 +32,7 @@ observationsRouter.post('/', async (request, response) => {
   console.log("POST")
   try {
     if ((request.body.temperature === undefined) || !request.body.time || !request.body.location
-    || request.body.temperature < -80 || request.body.temperature > 70) {
+    || request.body.temperature < -80 || request.body.temperature > 70 || request.body.time > new Date()) {
       console.log("Bad request")
       console.log(request.body)
       response.status(400).json({error:'Bad request'})
